@@ -65,8 +65,7 @@ paths:
       tags:
         - Nurses
       requestBody:
-        schema:
-          $ref: ../components/requestBodies/RegisterNurse.yaml
+        $ref: '#/components/requestBodies/RegisterNurse'
       responses:
         '200':
           description: a successful response indicating that a nurse has been successfully registered
@@ -140,6 +139,68 @@ components:
           type: object
         extensions:
           type: object
+    RegisterNurse:
+      type: object
+      properties:
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        practiceNumber:
+          type: string
+        idDocumentNumber:
+          type: string
+        idDocumentCountryOfIssue:
+          type: string
+          enum:
+            - ZA
+        idDocumentType:
+          type: string
+          enum:
+            - nationalId
+            - passport
+        idDocumentIssuedOn:
+          type: integer
+          format: int64
+        idDocumentExpiresOn:
+          type: integer
+          format: int64
+        professionalCategory:
+          type: string
+          enum:
+            - ENA
+            - EN
+            - RN
+        isPermanentWithDOH:
+          type: boolean
+        isPermanentWithPrivate:
+          type: boolean
+        permanentWithDOHStartDate:
+          type: integer
+          format: int64
+        permanentWithDOHEndDate:
+          type: integer
+          format: int64
+        password:
+          type: string
+      required:
+        - name
+        - surname
+        - email
+        - phoneNumber
+        - practiceNumber
+        - idDocumentNumber
+        - idDocumentCountryOfIssue
+        - idDocumentType
+        - idDocumentIssuedOn
+        - professionalCategory
+        - isPermanentWithDOH
+        - isPermanentWithPrivate
+        - password
   examples:
     ListOfNurses:
       value:
@@ -166,3 +227,10 @@ components:
         extensions:
           customExtendion1: string
           customExtension2: string
+  requestBodies:
+    RegisterNurse:
+      description: Registers a new nurse into the system
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RegisterNurse'
