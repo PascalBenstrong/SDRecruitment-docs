@@ -64,6 +64,9 @@ paths:
       security: []
       tags:
         - Nurses
+      requestBody:
+        schema:
+          $ref: ../components/requestBodies/RegisterNurse.yaml
       responses:
         '200':
           description: a successful response indicating that a nurse has been successfully registered
