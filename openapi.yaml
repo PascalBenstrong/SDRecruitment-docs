@@ -70,10 +70,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Nurse'
+                $ref: '#/components/schemas/JwtTokenPair'
               examples:
                 nurse:
-                  $ref: '#/components/examples/Nurse'
+                  $ref: '#/components/examples/JwtTokenPair'
         '400':
           description: an error response indicating issues with user provided details
           content:
@@ -137,15 +137,6 @@ components:
           type: object
         extensions:
           type: object
-    Nurse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        surname:
-          type: string
   examples:
     ListOfNurses:
       value:
@@ -172,8 +163,3 @@ components:
         extensions:
           customExtendion1: string
           customExtension2: string
-    Nurse:
-      value:
-        id: '1'
-        name: John
-        surname: Doe
